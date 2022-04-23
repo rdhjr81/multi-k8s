@@ -1,12 +1,16 @@
-name: learn-github-actions
-on: [push]
+name: deploy-multi-k8s
+on:
+	push:
+		branches:
+			- 'test-actions'
 jobs:
-  check-bats-version:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-      - run: npm install -g bats
-      - run: bats -v
+      - uses: actions/checkout@v3
+      
+			- name: Test
+				run: |-
+					docker login -u ${{ secrets.DOCKER_USERNAME}} -p ${{ secrets.DOCKER_PASSWORD }}
+					docker build -t dockspace9/react-test -f ./client/Dockerfile.dev ./client
+					docker run -e CI=true dockspace9/react-test npm test

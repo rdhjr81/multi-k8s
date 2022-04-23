@@ -1,7 +1,7 @@
 name: deploy multi k8s
 on: 
-	push: 
-		branches: 
+  push:
+    branches: 
 		- 'test-actions'
 jobs:
   build: 

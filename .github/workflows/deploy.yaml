@@ -1,8 +1,8 @@
-name: deploy-multi-k8s
+name: deploy multi k8s
 on: 
 	push: 
 		branches: 
-			- 'test-actions'
+		- 'test-actions'
 jobs:
   build: 
     runs-on: ubuntu-latest

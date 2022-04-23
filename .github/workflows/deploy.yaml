@@ -1,8 +1,8 @@
 name: Deploy MultiK8s
 on:
   push:
-	branches:
-	  - test-actions
+		branches:
+			- test-actions
  
 env:
   SHA: $(git rev-parse HEAD)

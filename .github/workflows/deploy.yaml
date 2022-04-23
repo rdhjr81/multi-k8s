@@ -1,12 +1,12 @@
 name: deploy-multi-k8s
-on:
-	push:
-		branches:
+on: 
+	push: 
+		branches: 
 			- 'test-actions'
 jobs:
-  build:
+  build: 
     runs-on: ubuntu-latest
-    steps:
+    steps: 
       - uses: actions/checkout@v3
       
 			- name: Test

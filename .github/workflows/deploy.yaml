@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v3
       
       - name: Test
-          run: |-
-            docker login -u ${{ secrets.DOCKER_USERNAME}} -p ${{ secrets.DOCKER_PASSWORD }}
-            docker build -t dockspace9/react-test -f ./client/Dockerfile.dev ./client
-            docker run -e CI=true dockspace9/react-test npm test
+        run: |-
+          docker login -u ${{ secrets.DOCKER_USERNAME}} -p ${{ secrets.DOCKER_PASSWORD }}
+					docker build -t dockspace9/react-test -f ./client/Dockerfile.dev ./client
+          docker run -e CI=true dockspace9/react-test npm test

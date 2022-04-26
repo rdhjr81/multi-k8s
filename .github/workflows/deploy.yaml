@@ -24,6 +24,11 @@ jobs:
         with: 
           credentials_json: '${{ secrets.GKE_SA_KEY }}'
 
+      - name: Set Project
+        uses: google-github-actions/setup-gcloud@v0
+        with:
+          project_id: multi-k8s-348113
+
       - name: Auth
         run: |-
           gcloud --quiet auth configure-docker
@@ -31,7 +36,8 @@ jobs:
       - name: Get Credentials
         uses: google-github-actions/setup-gcloud@v0
         with:
-          project_id: multi-k8s-348113
+          cluster_name: multi-cluster
+          location: us-east4-c
         
       - name: Build
         run: |- 

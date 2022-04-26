@@ -37,7 +37,7 @@ jobs:
         run: |- 
           docker build -t dockspace9/multi-client-k8s-gh:latest -t dockspace9/multi-client-k8s-gh:${{ env.SHA }} -f ./client/Dockerfile ./client
           docker build -t dockspace9/multi-server-k8s-gh:latest -t dockspace9/multi-server-k8s-gh:${{ env.SHA }} -f ./server/Dockerfile ./server
-          docker build -t dockspace9/multi-worker-k8s-gh:latest -t dockspace9/multi-server-k8s-gh:${{ env.SHA }} -f ./worker/Dockerfile ./worker
+          docker build -t dockspace9/multi-worker-k8s-gh:latest -t dockspace9/multi-worker-k8s-gh:${{ env.SHA }} -f ./worker/Dockerfile ./worker
 
       - name: Push
         run: |-

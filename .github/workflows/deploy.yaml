@@ -5,7 +5,7 @@ on:
     - 'test-actions'
 
 env:
-  SHA: $(get rev-parse HEAD)
+  SHA: $(git rev-parse HEAD)
 
 jobs:
   build: 

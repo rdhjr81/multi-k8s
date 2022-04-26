@@ -2,7 +2,7 @@ name: deploy multi k8s
 on: 
   push:
     branches: 
-    - 'test-actions'
+    - master
 
 env:
   SHA: $(git rev-parse HEAD)
@@ -48,3 +48,10 @@ jobs:
           docker push dockspace9/multi-client-k8s-gh:${{ env.SHA }}
           docker push dockspace9/multi-server-k8s-gh:${{ env.SHA }}
           docker push dockspace9/multi-worker-k8s-gh:${{ env.SHA }}
+        
+      - name: Apply
+        run: |-
+          kubectl apply -f./k8s
+          kubectl set image deployments/server-deployment server=dockspace9/multi-worker-k8s-gh:${{ env.SHA }}
+          kubectl set image deployments/client-deployment client=dockspace9/multi-client-k8s-gh:${{ env.SHA }}
+          kubectl set image deployments/worker-deployment worker=dockspace9/multi-worker-k8s-gh:${{ env.SHA }}
